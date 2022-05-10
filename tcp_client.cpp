@@ -4,12 +4,9 @@
 
 using boost::asio::ip::tcp;
 
-int main(int argc, char* argv[])
-{
-  try
-  {
-    if (argc != 2)
-    {
+int main(int argc, char* argv[]) {
+  try {
+    if (argc != 2) {
       std::cerr << "Usage: client <host>" << std::endl;
       return 1;
     }
@@ -22,8 +19,7 @@ int main(int argc, char* argv[])
     tcp::socket socket(io_context);
     boost::asio::connect(socket, endpoints);
 
-    for (;;)
-    {
+    for (;;) {
       boost::array<char, 128> buf;
       boost::system::error_code error;
 
