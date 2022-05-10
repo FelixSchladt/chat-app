@@ -1,27 +1,30 @@
 // Copyright 2022 Thomas Gingele (https://github.com/Ginthom)
 
-#include <boost/array.hpp>
 #include <boost/asio.hpp>
 #include <string>
 #include <iostream>
 
 using boost::asio::ip::udp;
 
-const int PORT = 5555;
+const int PORT   = 5555;
+const int REPEAT = 10;
 
 void send_udp(std::string message) {
 	try {
-		boost::asio::io_context io_context;
-		udp::resolver resolver(io_context);
-		boost::array<char, 1> recv_buf;
+		boost::asio::io_service iosrv;
+		udp::socket sock(iosrv, udp::endpoint(udp::v4(), PORT));
+		sock.set_option(boost::asio::socket_base::broadcast(true));
+		udp::endpoint dest(udp::v4(), PORT);
 
-		udp::endpoint remote_endpoint;
-		udp::socket socket(io_context, udp::endpoint(udp::v4(), PORT));
+		for (;;) {
+			std::string strbuf;
+			udp::endpoint sender_endpoint;
+			sock.receive_from(boost::asio::buffer(strbuf, strbuf.size()), sender_endpoint);
+			sock.send_to(boost::asio::buffer(message, sizeof(std::string)), sender_endpoint);
+		}
 
-		boost::asio::socket_base::broadcast option(true);
-                socket.set_option(option);
+		sock.close();
 
-		socket.send(boost::asio::buffer(message));
 	} catch(std::exception &e) {
 		std::cout << "An error occured: " << e.what() << std::endl;
 	}
