@@ -2,6 +2,9 @@
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
 
+#define IP "127.0.0.1"
+#define PORT 5555
+
 using boost::asio::ip::tcp;
 
 int main(int argc, char* argv[]) {
@@ -13,11 +16,11 @@ int main(int argc, char* argv[]) {
 
     boost::asio::io_context io_context;
 
-    tcp::resolver resolver(io_context);
-    tcp::resolver::results_type endpoints = resolver.resolve(argv[1], "daytime");
+    //tcp::resolver resolver(io_context);
+    tcp::endpoint dest(boost::asio::ip::address::from_string(IP), PORT);
 
     tcp::socket socket(io_context);
-    boost::asio::connect(socket, endpoints);
+    boost::asio::connect(socket, dest);
 
     for (;;) {
       boost::array<char, 128> buf;
