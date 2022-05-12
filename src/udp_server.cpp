@@ -17,7 +17,3 @@ void udp_server::broadcast(std::string message, std::string mask, int port) {
 		std::cout << "An error occured: " << e.what() << std::endl;
 	}
 }
-
-int main() {
-	//broadcast("Hallo ihr alle, esst mein broadcast signal.", "192.168.255.255", 7373);
-}
