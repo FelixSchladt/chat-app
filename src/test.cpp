@@ -1,7 +1,9 @@
-#include "udp_server.hpp"
+#include "udp_client.hpp"
 
 int main(int argc, char** argv) {
-	udp_server udpsrv;
+	udp_client udpclt;
 
-	udpsrv.broadcast("Ich bin der König des UDP", argv[1], 7373);
+	udpclt.broadcast("Ich bin der König des UDP", argv[1], 7373);
+	std::string message = udpclt.receive_broadcast(7373);
+	std::cout << message << std::endl;
 }

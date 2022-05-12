@@ -2,7 +2,8 @@
 #include <string>
 #include <iostream>
 
-class udp_server {
+class udp_client {
 public:
 	void broadcast(std::string message, std::string mask, int port);
+	std::string receive_broadcast(int port);
 };
