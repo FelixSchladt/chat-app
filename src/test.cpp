@@ -1,7 +1,7 @@
 #include "udp_server.hpp"
 
-int main() {
+int main(int argc, char** argv) {
 	udp_server udpsrv;
 
-	udpsrv.broadcast("Ich bin der König des UDP", "192.168.255.255", 7373);
+	udpsrv.broadcast("Ich bin der König des UDP", argv[1], 7373);
 }
