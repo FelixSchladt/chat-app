@@ -20,7 +20,7 @@ Zusammen mit dem Verschlüsselung-Modul können die Nachrichten vor dem Versende
 Durch das Logging können (Fehler-)Meldungen, die bei der Übertragung von Nachrichten auftreten können, gewichtet, mit Zeitstempel 
 in eine separate Log Datei geschrieben werden.
 Mit Hilfe der Komprimierung können die Daten vor Versand komprimiert werden, um die Größe des Payloads der einzelnen 
-Pakete zu verkleinern.
+Pakete zu verkleinenern.
 
 # Resúme:
 
