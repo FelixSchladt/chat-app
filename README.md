@@ -10,12 +10,16 @@ Anlegen einer Systemumgebungsvariable BOOST_ROOT mit dem Pfad zu den entpackten 
 - Unix:	`sudo apt-get install build-essential`
 
 # mingw:
-- Windows: Executable downloaden und enstprechend ausführen. Installationsanweisungen befolgen.
+- Windows: Executable downloaden und enstprechend ausführen. Installationsanweisungen befolgen. Es muss darauf geachtet werden,
+die richtige mingw Executable zu verwenden, um ggf. Libraries, die z. B. für Multithreading benötigt werden gleich mit zu installieren.
 
 # Anwendung:
 Mit dem Netzwerk Modul lassen sich Pakete der Größe 512 byte per TCP oder UDP verschicken und empfangen.
 
 TO-DO: (Anwendungsbeispiele)
+Das Modul könnte, wie in diesem Projekt, dafür verwendet werden, Chatnachrichten per TCP oder UDP an einen Server zu senden, 
+der die Nachricht wiederum an einen anderen Client weiterreicht. So kann eine Kommunikation zwischen den beiden Clients 
+über den Server aufgebaut werden.
 
 # Implementierungen:
 Zusammen mit dem Verschlüsselung-Modul können die Nachrichten vor dem Versenden verschlüsselt und nach Empfang entschlüsselt werden.
@@ -29,6 +33,7 @@ TO-DO: (Musterimplentierungen)
 # Resúme:
 
 TO-DO: (Was muss beim kompilieren beachtet werden?)
+
 
 Die Komplexität ist sehr hoch. Es ist zwar relativ einfach mit Beispiel Code Nachrichten zu versenden und an einem anderen Gerät im Netzwerk,
 welches auf dem jeweiligen Port lauscht, zu empfangen. Aber es gestaltet sich schwierig, eine Client - Server Kommunikation zu etablieren.
