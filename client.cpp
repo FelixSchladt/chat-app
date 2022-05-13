@@ -60,6 +60,7 @@ class client {
                 else {
                 const char *data = boost::asio::buffer_cast<const char *>(receive_buffer.data());
                     cout << data << endl;
+                    sleep(10);
                 }
             }
         }

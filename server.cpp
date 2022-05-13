@@ -30,19 +30,21 @@ public:
 
     void start()
     {
-        sock.async_read_some(
-                boost::asio::buffer(data, max_length),
-                boost::bind(&con_handler::handle_read,
-                            shared_from_this(),
-                            boost::asio::placeholders::error,
-                            boost::asio::placeholders::bytes_transferred));
+        //while(true) {
+            sock.async_read_some(
+                    boost::asio::buffer(data, max_length),
+                    boost::bind(&con_handler::handle_read,
+                                shared_from_this(),
+                                boost::asio::placeholders::error,
+                                boost::asio::placeholders::bytes_transferred));
 
-        sock.async_write_some(
-                boost::asio::buffer(message, max_length),
-                boost::bind(&con_handler::handle_write,
-                            shared_from_this(),
-                            boost::asio::placeholders::error,
-                            boost::asio::placeholders::bytes_transferred));
+            sock.async_write_some(
+                    boost::asio::buffer(message, max_length),
+                    boost::bind(&con_handler::handle_write,
+                                shared_from_this(),
+                                boost::asio::placeholders::error,
+                                boost::asio::placeholders::bytes_transferred));
+        //}
     }
 
     void handle_read(const boost::system::error_code& err, size_t bytes_transferred)
